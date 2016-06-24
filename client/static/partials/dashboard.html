@@ -1,0 +1,73 @@
+
+<div ng-controller="userController">
+  <nav>
+      <div class="nav-wrapper">
+        <a href="#" class="brand-logo">Bucket List</a>
+        <ul id="nav-mobile" class="right hide-on-med-and-down">
+          <li><a href="sass.html">Home</a></li>
+          <li><a ng-click="logout()">Logout</a></li>
+        </ul>
+      </div>
+    </nav>
+  <div class="container">
+     <h5>Welcome, {{username}}!</h5>
+     <form class="col s12" name="form">
+      <div class="row">
+        <div class="input-field col-md-3">
+          <input id="first_name" type="text" name="title" ng-model="new_bucket.title">
+          <label for="first_name">Title</label>
+          <!-- <span ng-messages="form.title.$error">
+      			<span ng-message="required">Title required</span>
+      			<span ng-message="minlength">Title must be longer than 5 characters</span>
+      		</span> -->
+        </div>
+        <div class="input-field col-md-4">
+          <textarea id="textarea1" name="description" ng-model="new_bucket.description" class="materialize-textarea"></textarea>
+          <label for="textarea1">Description</label>
+          <!-- <span ng-messages="form.description.$error">
+      			<span ng-message="required">Description required</span>
+      			<span ng-message="minlength">Description must be longer than 10 characters</span>
+      		</span> -->
+
+        </div>
+        <div class="input-field col-md-3">
+          <select class='browser-default' ng-model="new_bucket.user_id" name="user" required>
+            <option value='' selected disabled>Choose Friend</option>
+            <option  value='{{user._id}}' ng-repeat='user in users'>{{user.name}}</option>
+         </select>
+        </div>
+      </div>
+        <a class="waves-effect waves-light btn red" ng-click="addBucket()">Add to the list</a>
+    </form>
+  </div>
+
+  <div class="container">
+    <p>
+      before i die i want to...
+    </p>
+      <div ng-repeat= "bucket in buckets.buckets">
+        <button ng-click="Check(bucket._id)"> check? {{bucket.check}}</button>
+        <label for="filled-in-box">{{buckets.name}}  |   {{bucket.title}} | {{bucket.description }} @ {{bucket.date | date: 'short'}}</label>
+      </div>
+
+  </div>
+  <div class="container">
+    <p>
+      List of people
+    </p>
+   <p ng-repeat="user in users"><a ng-click="goHome(user._id)">{{user.name}}</a></p>
+
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+</div>

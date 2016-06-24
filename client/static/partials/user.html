@@ -1,0 +1,23 @@
+<div ng-controller="userController">
+  <nav>
+      <div class="nav-wrapper">
+        <a href="#" class="brand-logo">Bucket List</a>
+        <ul id="nav-mobile" class="right hide-on-med-and-down">
+          <li><a href="#/dashboard">Home</a></li>
+          <li><a ng-click="logout()">Logout</a></li>
+        </ul>
+      </div>
+    </nav>
+<div class="container">
+  <h4>{{user.name}}'s Bucket List</h4>
+	<p>Done:</p>
+	<ul ng-repeat="bucket in user.buckets">
+		<li ng-if="activity.check == true">{{bucket.title}}</li>
+	</ul>
+	<p>Pending:</p>
+	<ul ng-repeat="bucket in user.buckets">
+		<li ng-if="bucket.check == false">{{bucket._user.name}} | {{bucket.title}} - {{bucket.description}} - {{bucket.date | date: 'short'}} <button ng-if="current_user._id == user._id" ng-click="Check(bucket._id)">Check</button></li>
+	</ul>
+</div>
+
+</div>
