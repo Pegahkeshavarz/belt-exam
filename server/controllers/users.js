@@ -38,9 +38,7 @@ module.exports = (function(){
       User.findOne({_id: req.body.user_id})
             .populate('buckets')
             .exec(function(err, user){
-              console.log('///////////////');
-        console.log(user);
-  console.log('///////////////');
+        
       var bucket = new Bucket({title: req.body.title, description:req.body.description, date: req.body.date, check: req.body.check, user_id: user._id});
       user.buckets.push(bucket);
       bucket.save(function(err){
@@ -89,7 +87,7 @@ module.exports = (function(){
       if(err){
         console.log("errrrrrrror");
       } else {
-        res.json(user);
+        res.json(buckets);
       }
     })
   }

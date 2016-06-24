@@ -8,8 +8,8 @@ var UserSchema = new mongoose.Schema({
 }, {timestamps: true});
 
 var BucketSchema = new mongoose.Schema({
- title:{type:String},
- description:{ type: String},
+ title:{type:String, required: true},
+ description:{ type:String, required: true},
  user_id:{type: Schema.Types.ObjectId, ref: "User"},
  check: Boolean,
  date: Date

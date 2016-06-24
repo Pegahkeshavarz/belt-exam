@@ -6,8 +6,8 @@ myApp.controller('userController', function ($scope, userFactory, $location, $lo
   ////////////////////////////////////////////////////////
   var duplicated_name = false;
   var required = false;
-
-
+  $localStorage.user;
+  $scope.user = [];
 
 
 $scope.current_user = userFactory.getCurrentUser();
